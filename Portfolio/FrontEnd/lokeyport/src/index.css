@@ -1,0 +1,230 @@
+/*
+  =======================================
+  Modern Web App Styles – Enhanced Edition
+  =======================================
+  - Unified design tokens
+  - Cross-browser compatibility
+  - Performance-optimized
+*/
+
+:root {
+  /* Typography */
+  --font-main: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+
+  /* Colors */
+  --color-bg-dark: #0f172a;
+  --color-bg-light: #ffffff;
+  --color-text-dark: rgba(255, 255, 255, 0.92);
+  --color-text-light: #213547;
+  --color-accent-blue: #38bdf8;
+  --color-accent-purple: #818cf8;
+  --color-accent-pink: #f472b6;
+
+  /* Radius & spacing */
+  --radius-lg: 12px;
+  --header-height: 90px;
+
+  /* Transitions */
+  --transition-fast: all 0.3s ease-in-out;
+}
+
+/* ========== Global Styles ========== */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: var(--color-text-dark);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--color-bg-light);
+    color: var(--color-text-light);
+  }
+}
+
+#root {
+  padding-top: var(--header-height);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ========== Navbar ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 999;
+  box-sizing: border-box;
+  transition: var(--transition-fast);
+}
+
+.logo {
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple), var(--color-accent-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.logo:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: clamp(1rem, 2vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  margin: 0 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple), var(--color-accent-pink));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ========== Buttons ========== */
+.cta-button {
+  text-decoration: none;
+  color: white;
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--color-accent-blue), var(--color-accent-purple));
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(129, 140, 248, 0.6);
+}
+
+.button-primary {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple));
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: var(--transition-fast);
+}
+
+.button-primary:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(99, 102, 241, 0.35);
+}
+
+.button-primary:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.button-primary:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* ========== Headings ========== */
+h1,
+h2 {
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-purple), var(--color-accent-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  animation: fadeInDown 0.8s ease both;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin: 2rem 0 1rem;
+  font-weight: 700;
+}
+
+/* ========== Sections ========== */
+section {
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+  text-align: center;
+  animation: fadeInUp 1s ease both;
+}
+
+/* ========== Animations ========== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Responsive Navbar ========== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .nav-link {
+    margin: 0.5rem 0;
+  }
+}

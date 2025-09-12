@@ -1,0 +1,4 @@
+# Vercel ignores
+node_modules/
+dist/
+.env
